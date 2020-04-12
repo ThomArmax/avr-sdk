@@ -4,6 +4,8 @@
  *
  * AVR SDK is an attempt to make a common C API for AVR MCUs
  *
+ * The online repository can be found here : https://github.com/ThomArmax/avr-sdk
+ *
  * \section Features
  * - \ref GROUP_I2C
  * - \ref GROUP_UTILS
