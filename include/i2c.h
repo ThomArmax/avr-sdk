@@ -8,6 +8,11 @@
 #include "common.h"
 
 /**
+ * @defgroup GROUP_I2C I2C
+ * @{
+ */
+
+/**
  * @brief Defines the I2C bus speed
  */
 typedef enum
@@ -84,5 +89,9 @@ err_t i2c_master_write_buf(uint8_t *buf, uint16_t len);
  * @return `err_ok` if succeeded; `err_fail` otherwise
  */
 err_t i2c_master_transmit(uint8_t addr, void *buff, uint16_t len);
+
+/**
+ * @}
+ */
 
 #endif // I2C_H
