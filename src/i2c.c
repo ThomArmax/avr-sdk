@@ -95,7 +95,7 @@ err_t i2c_master_stop()
     return err_ok;
 }
 
-err_t i2c_master_write_byte(uint8_t b)
+err_t i2c_master_write(uint8_t b)
 {
     // Load DATA into TWDR register.
     // Clear TWINT bit in TWCR to start transmission of data
@@ -114,7 +114,19 @@ err_t i2c_master_write_byte(uint8_t b)
     return err_ok;
 }
 
-err_t i2c_master_send(uint8_t addr, void *buff, uint32_t len)
+err_t i2c_master_write_buf(uint8_t *buf, uint16_t len)
 {
+    for (uint32_t i = 0; i < len; i++)
+    {
+        if (i2c_master_write(buf[i] != err_ok))
+            return err_fail;
+    }
+
+    return err_ok;
+}
+
+err_t i2c_master_send(uint8_t addr, void *buff, uint16_t len)
+{
+
     return err_fail;
 }

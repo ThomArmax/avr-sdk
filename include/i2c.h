@@ -65,7 +65,15 @@ err_t i2c_master_stop();
  * @param b
  * @return `err_ok` if succeeded; `err_fail` otherwise
  */
-err_t i2c_master_write_byte(uint8_t b);
+err_t i2c_master_write(uint8_t b);
+
+/**
+ * @brief Transmits the given buffer
+ * @param buf
+ * @param len
+ * @return `err_ok` if succeeded; `err_fail` otherwise
+ */
+err_t i2c_master_write_buf(uint8_t *buf, uint16_t len);
 
 /**
  * @brief Convenient all in one function which sends a buffer to a slave.
@@ -75,6 +83,6 @@ err_t i2c_master_write_byte(uint8_t b);
  * @param len Lenght of input buffer @p buff
  * @return `err_ok` if succeeded; `err_fail` otherwise
  */
-err_t i2c_master_send(uint8_t addr, void *buff, uint32_t len);
+err_t i2c_master_send(uint8_t addr, void *buff, uint16_t len);
 
 #endif // I2C_H
