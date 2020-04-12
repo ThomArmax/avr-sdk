@@ -1,3 +1,8 @@
+/**
+ * @example i2c_master_example.c
+ * This is an example of how to use the I2C layer for master sending
+ */
+
 #include "i2c.h"
 #include "utils.h"
 

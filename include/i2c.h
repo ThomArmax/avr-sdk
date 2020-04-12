@@ -9,6 +9,9 @@
 
 /**
  * @defgroup GROUP_I2C I2C
+ * @brief I2C protocol implementation
+ * @details Here is an example:
+ * @include i2c_master_example.c
  * @{
  */
 
