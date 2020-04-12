@@ -125,8 +125,16 @@ err_t i2c_master_write_buf(uint8_t *buf, uint16_t len)
     return err_ok;
 }
 
-err_t i2c_master_send(uint8_t addr, void *buff, uint16_t len)
+err_t i2c_master_transmit(uint8_t addr, void *buf, uint16_t len)
 {
+    if (i2c_master_start(addr, i2c_direction_write) != err_ok)
+        return err_fail;
 
-    return err_fail;
+    if (i2c_master_write_buf(buf, len) != err_ok)
+        return err_fail;
+    
+    if (i2c_master_stop() != err_ok)
+        return err_fail;
+
+    return err_ok;
 }
