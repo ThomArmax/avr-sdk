@@ -116,7 +116,7 @@ err_t i2c_master_write(uint8_t b)
 
 err_t i2c_master_write_buf(uint8_t *buf, uint16_t len)
 {
-    for (uint32_t i = 0; i < len; i++)
+    for (uint16_t i = 0; i < len; i++)
     {
         if (i2c_master_write(buf[i] != err_ok))
             return err_fail;
