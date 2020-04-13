@@ -49,6 +49,48 @@ volatile uint8_t* gpio_port_to_ddr(uint8_t port)
     return 0x0;
 }
 
+volatile uint8_t* gpio_port_to_port_input_reg(uint8_t port)
+{
+#ifdef PORTA
+    if (port == PORTA) return &PINA;
+#endif
+#ifdef PORTB
+    if (port == PORTB) return &PINB;
+#endif
+#ifdef PORTC
+    if (port == PORTC) return &PINC;
+#endif
+#ifdef PORTD
+    if (port == PORTD) return &PIND;
+#endif
+#ifdef PORTE
+    if (port == PORTE) return &PINE;
+#endif
+#ifdef PORTF
+    if (port == PORTF) return &PINF;
+#endif
+#ifdef PORTG
+    if (port == PORTG) return &PING;
+#endif
+#ifdef PORTH
+    if (port == PORTH) return &PINH;
+#endif
+#ifdef PORTI
+    if (port == PORTI) return &PINI;
+#endif
+#ifdef PORTJ
+    if (port == PORTJ) return &PINJ;
+#endif
+#ifdef PORTK
+    if (port == PORTK) return &PINK;
+#endif
+#ifdef PORTL
+    if (port == PORTL) return &PINL;
+#endif
+
+    return 0x0;
+}
+
 inline void gpio_set_mode(uint8_t port, uint8_t pin, gpio_mode_t mode)
 {
     volatile uint8_t * ddrReg = gpio_port_to_ddr(port);
@@ -75,5 +117,6 @@ inline void gpio_toggle(volatile uint8_t * port, uint8_t pin)
 
 uint8_t gpio_get(volatile uint8_t * port, uint8_t pin)
 {
-    return bit_check(*port, pin);
+    volatile uint8_t * input_reg = gpio_port_to_port_input_reg(*port);
+    return bit_check(*input_reg, pin);
 }

@@ -38,6 +38,17 @@ typedef enum
 volatile uint8_t* gpio_port_to_ddr(uint8_t port);
 
 /**
+ * @brief Returns the Port Input Register from given port
+ * @details Example :
+ * @code
+ * volatile uint8_t* pinb_reg = gpio_port_to_port_input_reg(PORTB);
+ * @encode
+ * @param port
+ * @return the Port Input Register from given port
+ */
+volatile uint8_t* gpio_port_to_port_input_reg(uint8_t port);
+
+/**
  * @brief Configures a GPIO
  * @param port
  * @param pin
@@ -79,6 +90,10 @@ void gpio_toggle(volatile uint8_t * port, uint8_t pin);
 
 /**
  * @brief Returns the state of a GPIO
+ * @details Example:
+ * @code
+ * uint8_t state = gpio_get(&PORTB, PORTB5)
+ * @endif
  * @param port
  * @param pin
  * @return `1` if pin is high, `0` otherwise

@@ -15,12 +15,12 @@ int main()
     gpio_set_mode(PORTB, PIN5, gpio_mode_output);
     gpio_clear(&PORTB, PIN5);
 
-    volatile uint8_t d12State = 0;
+    volatile uint8_t d12_state = 0;
     while (1)
     {
-        d12State = gpio_get(&PINB, PIN4);
+        d12_state = gpio_get(&PORTB, PIN4);
         
-        if (d12State)
+        if (d12_state)
             gpio_set(&PORTB, PIN5);
         else
             gpio_clear(&PORTB, PIN5);
