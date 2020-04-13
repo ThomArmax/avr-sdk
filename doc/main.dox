@@ -7,6 +7,7 @@
  * The online repository can be found here : https://github.com/ThomArmax/avr-sdk
  *
  * \section Features
+ * - \ref GROUP_GPIO
  * - \ref GROUP_I2C
  * - \ref GROUP_UTILS
  *
