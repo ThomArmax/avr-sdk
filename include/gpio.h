@@ -6,10 +6,12 @@
 #define GPIO_H
 
 #include <stdint.h>
+#include "utils.h"
 
 /**
  * @defgroup GROUP_GPIO GPIO
  * @brief General Purpose Input Output management
+ * @include gpio_example.c
  * @{
  */
 
@@ -27,7 +29,7 @@ typedef enum
  * @param port
  * @return the Data Direction Register for the given port
  */
-uint8_t gpio_port_to_ddr(uint8_t port);
+volatile uint8_t* gpio_port_to_ddr(uint8_t port);
 
 /**
  * @brief Configures a GPIO
@@ -38,16 +40,6 @@ uint8_t gpio_port_to_ddr(uint8_t port);
 void gpio_set_mode(uint8_t port, uint8_t pin, gpio_mode_t mode);
 
 /**
- * @brief Configure a GPIO in output mode
- */
-#define GPIO_SET_MODE_OUTPUT(port, pin) gpio_set_mode(port, pin, gpio_mode_output)
-
-/**
- * @brief Configure a GPIO in input mode
- */
-#define GPIO_SET_MODE_INPUT(port, pin) gpio_set_mode(port, pin, gpio_mode_input)
-
-/**
  * @brief Sets a GPIO to `1L`
  * @param port
  * @param pin
@@ -55,7 +47,7 @@ void gpio_set_mode(uint8_t port, uint8_t pin, gpio_mode_t mode);
  * @sa gpio_toggle()
  * @note The GPIO must be previously configured in OUTPUT
  */
-void gpio_set(uint8_t port, uint8_t pin);
+void gpio_set(volatile uint8_t * port, uint8_t pin);
 
 /**
  * @brief Sets a GPIO to `0L`
@@ -65,17 +57,40 @@ void gpio_set(uint8_t port, uint8_t pin);
  * @sa gpio_toggle()
  * @note The GPIO must be previously configured in OUTPUT
  */
-void gpio_clear(uint8_t port, uint8_t pin);
+void gpio_clear(volatile uint8_t * port, uint8_t pin);
 
 /**
  * @brief Toggles the GPIO
+ * @brief If the GPIO is `1L` then it will flip to `0L`.
+ * If the GPIO is `0L` then it will flip to `1L`.
  * @param port
  * @param pin
  * @note The GPIO must be previously configured in OUTPUT
  * @sa gpio_set()
  * @sa gpio_clear()
  */
-void gpio_toggle(uint8_t port, uint8_t pin);
+void gpio_toggle(volatile uint8_t * port, uint8_t pin);
+
+/**
+ * @brief Configure a GPIO in output mode
+ */
+#define GPIO_SET_MODE_OUTPUT(port, pin) gpio_set_mode(port, pin, gpio_mode_output)
+/**
+ * @brief Configure a GPIO in input mode
+ */
+#define GPIO_SET_MODE_INPUT(port, pin) gpio_set_mode(port, pin, gpio_mode_input)
+/**
+ * @brief Sets a GPIO to `1L`
+ */
+#define GPIO_SET(port, pin) BIT_SET(port, pin)
+/**
+ * @brief Sets a GPIO to `0L`
+ */
+#define GPIO_CLEAR(port, pin) BIT_CLEAR(port, pin)
+/**
+ * @brief Toggles the GPIO
+ */
+#define GPIO_TOGGLE(port, pin) BIT_TOGGLE(port, pin)
 
 /**
  * @}
