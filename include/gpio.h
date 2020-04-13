@@ -11,7 +11,7 @@
 /**
  * @defgroup GROUP_GPIO GPIO
  * @brief General Purpose Input Output management
- * @include gpio_example.c
+ * @include gpio_output_example.c
  * @{
  */
 
