@@ -31,6 +31,7 @@ int main()
 
         _delay_ms(2000);
 
+        // Blink the LED using gpio_toggle function
         for (int i = 0; i < 20; i++)
         {
             gpio_toggle(D13_PIN);
