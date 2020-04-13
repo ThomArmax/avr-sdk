@@ -11,7 +11,13 @@
 /**
  * @defgroup GROUP_GPIO GPIO
  * @brief General Purpose Input Output management
+ * 
+ * This example shows how to use GPIO as output
  * @include gpio_output_example.c
+ * 
+ * This example shows how to use GPIO as input.
+ * The read GPIO state will be replacated on another pin (configured in output)
+ * @include gpio_input_example.c
  * @{
  */
 
@@ -72,6 +78,14 @@ void gpio_clear(volatile uint8_t * port, uint8_t pin);
 void gpio_toggle(volatile uint8_t * port, uint8_t pin);
 
 /**
+ * @brief Returns the state of a GPIO
+ * @param port
+ * @param pin
+ * @return `1` if pin is high, `0` otherwise
+ */
+uint8_t gpio_get(volatile uint8_t * port , uint8_t pin);
+
+/**
  * @brief Configure a GPIO in output mode
  */
 #define GPIO_SET_MODE_OUTPUT(port, pin) gpio_set_mode(port, pin, gpio_mode_output)
@@ -91,6 +105,10 @@ void gpio_toggle(volatile uint8_t * port, uint8_t pin);
  * @brief Toggles the GPIO
  */
 #define GPIO_TOGGLE(port, pin) BIT_TOGGLE(port, pin)
+/**
+ * @brief Returns the state of a GPIO
+ */
+#define GPIO_GET(port, pin) BIT_CHECK(port, pin)
 
 /**
  * @}

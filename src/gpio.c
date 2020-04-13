@@ -72,3 +72,8 @@ inline void gpio_toggle(volatile uint8_t * port, uint8_t pin)
 {
     bit_toggle(port, pin);
 }
+
+uint8_t gpio_get(volatile uint8_t * port, uint8_t pin)
+{
+    return bit_check(*port, pin);
+}

@@ -1,5 +1,5 @@
 /**
- * @example gpio_example.c
+ * @example gpio_output_example.c
  * This is an example of how to use the I2C layer for master sending
  */
 
