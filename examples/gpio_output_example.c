@@ -14,7 +14,7 @@ int main()
     // D13 pin init
     // Set in output mode
     // Set LOW
-    gpio_set_mode(PORTB, PIN5, gpio_mode_output);
+    gpio_set_mode(D13_PIN, gpio_mode_output);
     gpio_clear(D13_PIN);
 
     while (1)

@@ -54,7 +54,7 @@ volatile uint8_t* gpio_port_to_port_input_reg(uint8_t port);
  * @param pin
  * @param mode
  */
-void gpio_set_mode(uint8_t port, uint8_t pin, gpio_mode_t mode);
+void gpio_set_mode(volatile uint8_t * port, uint8_t pin, gpio_mode_t mode);
 
 /**
  * @brief Sets a GPIO to `1L`
