@@ -7,7 +7,7 @@
 
 #include <avr/io.h>
 
-volatile uint8_t* gpio_port_to_ddr(uint8_t port)
+volatile uint8_t* gpio_port_to_data_direction_reg(uint8_t port)
 {
 #ifdef PORTA
     if (port == PORTA) return &DDRA;
@@ -93,7 +93,7 @@ volatile uint8_t* gpio_port_to_port_input_reg(uint8_t port)
 
 inline void gpio_set_mode(uint8_t port, uint8_t pin, gpio_mode_t mode)
 {
-    volatile uint8_t * ddrReg = gpio_port_to_ddr(port);
+    volatile uint8_t * ddrReg = gpio_port_to_data_direction_reg(port);
     if (mode == gpio_mode_output)
         bit_set(ddrReg, pin);
     else

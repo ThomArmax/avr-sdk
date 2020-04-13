@@ -35,7 +35,7 @@ typedef enum
  * @param port
  * @return the Data Direction Register for the given port
  */
-volatile uint8_t* gpio_port_to_ddr(uint8_t port);
+volatile uint8_t* gpio_port_to_data_direction_reg(uint8_t port);
 
 /**
  * @brief Returns the Port Input Register from given port
