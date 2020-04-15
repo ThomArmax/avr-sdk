@@ -8,6 +8,6 @@
  *
  * \section Features
  * - \ref GROUP_I2C
+ * - \ref GROUP_SPI
  * - \ref GROUP_UTILS
- *
  */
