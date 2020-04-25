@@ -7,6 +7,11 @@
 
 #include "common.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /**
  * @defgroup GROUP_I2C I2C
  * @brief I2C protocol implementation
@@ -96,5 +101,10 @@ err_t i2c_master_transmit(uint8_t addr, void *buff, uint16_t len);
 /**
  * @}
  */
+
+#ifdef __cplusplus
+}
+#endif
+
 
 #endif // I2C_H
